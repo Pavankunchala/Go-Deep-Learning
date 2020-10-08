@@ -129,6 +129,21 @@ class Board():
 
             return None
         return string
+    def remove_string(self,string):
+        for point in string.stones:
+            for neighbor in point.neighbors():
+                neighbor_string = self._grid.get(neighbor)
+                if neighbor_string is None:
+                    continue
+                if neighbor_string is not string:
+                    neighbor_string.add_libertiy(point)
+                
+            self._grid[point]= None
+    
+#creating A GAME STATE
+
+class GameState():
+    
 
 
         
